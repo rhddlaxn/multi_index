@@ -5,24 +5,23 @@ using namespace eosio;
 CONTRACT addressbook: public contract{
     public:
         using contract::contract;
-
-
-        ACTION upsert() {}
-        ACTION insert(name user, std::string first_name, std::string last_name, uint32_t age) {
+     
+        
+        ACTION upsert(name user, std::string first_name, std::string last_name, uint32_t age) {
             require_auth(user);
            
-            address_index forInsert(get_self(), get_self().value);
-            auto itr = forInsert.find(user.value); //auto 뒤에 오는 변수의 자료형을 알아서 바꿔주어 자료형을 안써줘도됨
+            address_index forUpsert(get_self(), get_self().value);
+            auto itr = forUpsert.find(user.value); //auto 뒤에 오는 변수의 자료형을 알아서 바꿔주어 자료형을 안써줘도됨
             
-            check(itr == forInsert.end(), "already exists");
+            check(itr == forUpsert.end(), "already exists");
 
-            forInsert.emplace(user, [&](auto& row){
+            forUpsert.emplace(user, [&](auto& row){
                 row.user = user;
                 row.first_name = first_name;
                 row.last_name = last_name;
                 row.age = age;
             });
-            print("insert success");
+            print("upsert success");
         }
         ACTION erase(name user) {
             require_auth(user);

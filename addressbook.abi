@@ -14,28 +14,6 @@
             ]
         },
         {
-            "name": "insert",
-            "base": "",
-            "fields": [
-                {
-                    "name": "user",
-                    "type": "name"
-                },
-                {
-                    "name": "first_name",
-                    "type": "string"
-                },
-                {
-                    "name": "last_name",
-                    "type": "string"
-                },
-                {
-                    "name": "age",
-                    "type": "uint32"
-                }
-            ]
-        },
-        {
             "name": "person",
             "base": "",
             "fields": [
@@ -60,18 +38,30 @@
         {
             "name": "upsert",
             "base": "",
-            "fields": []
+            "fields": [
+                {
+                    "name": "user",
+                    "type": "name"
+                },
+                {
+                    "name": "first_name",
+                    "type": "string"
+                },
+                {
+                    "name": "last_name",
+                    "type": "string"
+                },
+                {
+                    "name": "age",
+                    "type": "uint32"
+                }
+            ]
         }
     ],
     "actions": [
         {
             "name": "erase",
             "type": "erase",
-            "ricardian_contract": ""
-        },
-        {
-            "name": "insert",
-            "type": "insert",
             "ricardian_contract": ""
         },
         {
