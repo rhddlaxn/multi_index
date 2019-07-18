@@ -20,7 +20,9 @@ CONTRACT addressbook: public contract{
                 row.first_name = first_name;
                 row.last_name = last_name;
                 row.age = age;
-            });}
+            })
+            ;print("upsert success");
+            }
             else { 
                 forUpsert.modify(itr, user, [&](auto& row){
                     row.user = user;
@@ -28,8 +30,9 @@ CONTRACT addressbook: public contract{
                     row.last_name = last_name;
                     row.age = age;
                 });
+                print("modify success");
             }
-            print("upsert success");
+            
         }
         ACTION erase(name user) {
             require_auth(user);
