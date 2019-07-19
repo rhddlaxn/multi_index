@@ -11,7 +11,7 @@ CONTRACT addressbook: public contract{
             address_index addresses(get_self(), get_self().value);
             auto forsecondary = addresses.get_index<"byage"_n>();
             auto itr = forsecondary.require_find(age, "no age");
-            print(itr -> user, " ", itr->age);
+            print(itr -> last_name, " ", itr->age);
         }
      
         
